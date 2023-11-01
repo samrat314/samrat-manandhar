@@ -1,320 +1,578 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="UFT-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samton Page</title>
+    <link rel="stylesheet" href="indexpage.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-   
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>Samton page</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-  </head>
-  <body>
+    <link rel="icon" type="image/png" sizes="32x32" href="img2/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img2/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
 
-    <div class="position-fixed bottom-0 end-0" style="z-index: 2000;"><a href="#"><button style="border-radius: 40%;" class="p-2 m-3 text-white bg-danger ">GO HOME</button>
-    </a></div>
-     
-    <!--this is our nav bar-->
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid ">
-      <div class="container-fluid ">
-        <a class="navbar-brand " href="#">Samton Physics : Main Page</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#author">About Author</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Contents in home-page
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#syllabus">Syllabus</a></li>
-                <li><a class="dropdown-item" href="#grid">Specification Grid</a></li>
-                <li><a class="dropdown-item" href="#model">Model Question</a></li>
+<body>
 
-                <li><a class="dropdown-item" href="#cmt">Your comments/suggestions</a></li>
-              </ul>
-            </li>
-          </ul>
+    <header>
+        <h1><code>Samton Page</code></h1>
+        <div style="color: #ababab;">[THE ECLIPSE]</div>
+    </header>
+
+    <div class="navbar">
+
+        <a href="#" class="scroll-link" id="mainPageButton">Main Page Content</a>
+        
+        <a href="#rightbuttongang">Samton Physics</a>
+        <a href="#rightbuttongang">IOE Exam</a>
+        <div class="dropdown hidden" id="dropdownButtons"></div>
+
+           
+   
+</div>
+
         </div>
+        
+    
+
+    <div class="animation-container">
+        <div id="star">
+            <div id="planet"></div>
+        </div>
+    </div>
+
+
+    <div class="mainContainer">
+      <div class="buttongang">
+      <div  id="leftbuttongang">
+          <button class="section-button" data-target="Aboutme" >About me</button>
+          <button class="section-button" data-target="Portfolio">Portfolio</button>
+          <button class="section-button" data-target="Contact">Contact</button>
       </div>
-    </nav>
+      <div id="rightbuttongang">
+        <button class="section-button"><a href="samton.html" target="_blank" style="text-decoration: none; color: white;">Samton Physics</a></button>
+        <button class="section-button"><a href="prelogin.html" target="_blank" style="text-decoration: none;color: white;">IOE CBT Exam Interface</a></button>
+      </div>
+      </div>
+
+      <button id="go-to-top-btn" title="Go to Top"><i class="fas fa-arrow-up"></i></button>
+
   
+      <div id="Aboutme" class="content-section">
+        <div style="display: flex; justify-content: center;">
+            <h1>About Me</h1>
+        </div>
+        <div class="aboutdiv">
+            <div class="firstaboutdiv"> 
+                
+                
+            </div>
+    
+            <div class="secondaboutdiv">
+                <div style="padding: 30px;">
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <img src="img2/samton.JPG" alt="" style="height: 100px; width: 100px; border-radius: 50%; box-shadow: 0 0  15px rgb(115, 112, 112, 0.5);">
+                        <div style="display: flex; flex-direction: column; padding-left: 20px;">
+                            <div style="font-size: 2em; padding: 10px;">Samrat Manandhar</div>
+                            
+                               <div class="icongang">
+                                
+                                <a href="https://www.youtube.com/@samratmanandhar" target="_blank" class="youtube-icon"  >
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                                
 
-    <hr>
+                                
+                                
+                                <a href="https://www.facebook.com/samrat.manandhar.79" target="_blank" class="facebook-icon"  >
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                
 
-
-        <!--this is our drop down box-->
-
-    <!-- Example split danger button -->
-<div class=" bg-dark mt-3 container-fluid ">
-  <div class="btn-group m-3 ">
-<button type="button" class="btn btn-danger"><a href="mechanics.html" class="text-decoration-none text-white "> Mechanics</a></button>
-<button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-  <span class="visually-hidden">Toggle Dropdown</span>
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="mechanics.html">Rotational Dynamics</a></li>
-  <li><a class="dropdown-item" href="mechanics.html">Periodic motion</a></li>
-  <li><a class="dropdown-item" href="mechanics.html">Fluid Statics</a></li>
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="mechanics.html">Important Questions</a></li>   
-</ul>
-</div>
-
-<!-- Example split primary button -->
-<div class="btn-group m-3">
-  <button type="button" class="btn btn-primary"><a href="heat.html" class="text-decoration-none text-white "> Heat and thermodynamic</a></button>
-<button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-  <span class="visually-hidden">Toggle Dropdown</span>
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="heat.html">First law thermodynamics</a></li>
-  <li><a class="dropdown-item" href="heat.html">Second law of thermodynamics</a></li>
-  
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="heat.html">Important questions</a></li>
-</ul>
-</div>
-
-<!-- Example split secondary button -->
-<div class="btn-group m-3">
-  <button type="button" class="btn btn-secondary"><a href="optics.html" class="text-decoration-none text-white "> Wave and optics</a></button>
-<button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-  <span class="visually-hidden">Toggle Dropdown</span>
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="optics.html">Wave motion</a></li>
-  <li><a class="dropdown-item" href="optics.html">Mechanical waves</a></li>
-  <li><a class="dropdown-item" href="optics.html">Waves in pipe and strings</a></li>
-  <li><a class="dropdown-item" href="optics.html">Acoustic phenomena</a></li>
-  <li><a class="dropdown-item" href="optics.html">Nature and propagation of light</a></li>
-  <li><a class="dropdown-item" href="optics.html">Interference</a></li>
-  <li><a class="dropdown-item" href="optics.html">Diffraction</a></li>
-  <li><a class="dropdown-item" href="optics.html">Polarization</a></li>
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="optics.html">Important questions</a></li>
-</ul>
-</div>
-
-<!-- Example split success button -->
-<div class="btn-group m-3">
-  <button type="button" class="btn btn-success"><a href="electricity.html" class="text-decoration-none text-white "> Electricity and magnetism</a></button>
-<button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-  <span class="visually-hidden">Toggle Dropdown</span>
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="electricity.html">Electrical circuits</a></li>
-  <li><a class="dropdown-item" href="electricity.html">Thermoelectric effects</a></li>
-  <li><a class="dropdown-item" href="electricity.html">Magnetic field</a></li>
-  <li><a class="dropdown-item" href="electricity.html">Magnetic property of materials</a></li>
-  <li><a class="dropdown-item" href="electricity.html">Electromagnetic induction</a></li>
-  <li><a class="dropdown-item" href="electricity.html">Alternating currents</a></li>
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="electricity.html">Important questions</a></li>
-</ul>
-</div>
-
-<!-- Example split info button -->
-<div class="btn-group m-3">
-  <button type="button" class="btn btn-info"><a href="modern.html" class="text-decoration-none text-white "> Modern physics</a></button>
-<button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-  <span class="visually-hidden">Toggle Dropdown</span>
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="modern.html">Electrons</a></li>
-  <li><a class="dropdown-item" href="modern.html">Photons</a></li>
-  <li><a class="dropdown-item" href="modern.html">Semiconductor devices</a></li>
-  <li><a class="dropdown-item" href="modern.html">Quantization of energy</a></li>
-  <li><a class="dropdown-item" href="modern.html">Radioactivity and nuclear reactions</a></li>
-  <li><a class="dropdown-item" href="modern.html">Recent trend in physics</a></li>
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="modern.html">Important questions</a></li>
-</ul>
-</div>
-
-<!-- Example split warning button -->
-<div class="btn-group m-3">
-<button type="button" class="btn btn-warning">Some tips and tricks</button>
-<button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-  <span class="visually-hidden">Toggle Dropdown</span>
-</button>
-<ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="#">Studying methods</a></li>
-  <li><a class="dropdown-item" href="#">For IOE and CEE preparation</a></li>
-  <li><a class="dropdown-item" href="#">Exam tips and tricks</a></li>
-  <li><hr class="dropdown-divider"></li>
-  <li><a class="dropdown-item" href="#">Some model Exam Question papers</a></li>
-</ul>
-</div>
-</div>
+                                
+                                
+                                <a href="https://www.instagram.com/samrat_manandhar_/" target="_blank" class="instagram-icon"  >
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                
+                                
+                                
+                                <a href="https://twitter.com/manandharsamrat" target="_blank" class="twitter-icon"  >
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                            
+                            <div style="padding: 10px; font-weight: bold; color: #022954;">
+                                Electrical Engineering Student || Cosmic Enthusiast
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
 
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary container-fluid" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  About this page
-</button>
 
-<!-- Modal -->
-<div class="modal fade container" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">About this Page</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Welcome to our page dedicated to helping Grade 12 students preparing for their upcoming NEB Board Exam! Created by Samrat Manandhar, this page is designed to provide students with easy access to important questions, comprehensive syllabus coverage, and model question papers.
-        <br>
-        <br>
+        <section class="portfolio">
+            <div><h2>View Major Works</h2></div>
+            <div class="portfolio-container">
+                <div class="portfolio-item">
+                    <img src="img2/project1.png" alt="Portfolio Project 1">
+                    <h3><a href="samton.html" target="_blank">Samton Physics</a></h3>
+                    <br>
+                    <p>Web designed to help NEB students study for physics course free of cost in a effective UI interface with helpful materials and suggestions.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img2/project2.png" alt="Portfolio Project 2">
+                    <h3><a href="generator.html" target="_blank">Question Generator Software</a></h3>
+                    <br>
+                    <p>Serves as a tool to edit and write mathematical expressions and generate questions for the IOE CBT exam model software and other mcq exams easily. Also provides ease to write the HTML and JS code dynamically.</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img2/project3.png" alt="Portfolio Project 3">
+                    <h3><a href="prelogin.html" target="_blank">IOE CBT Exam Interface</a></h3>
+                    <br>
+                    <p>Developed as a replica for engineering aspirants to have a real experience of the IOE CBT exam UI.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <br>
+      <div id="Portfolio" >
+      <div class="portsam">
+          <section class="hero">
+            <div class="hero-content">
+                <h1>Samrat Manandhar</h1>
+                <p>Science Enthusiast & Front-End Developer || Electrical Engineering Student</p>
+            </div>
+        </section>
+    
+        <section class="about-me">
+            <div class="about-me-content">
+                <h2>Hello there!</h2>
+                <div id="typed-text" style="text-align: justify;"></div>
+            </div>
+        </section>
+    
+        <section class="my-journey">
+            <div class="my-journey-content">
+                <h2 style="color:  #1434A4; font-size: 40px;">My Journey</h2>
+                <section class="education" style="margin: 10px;">
+                    <h3>Education</h3>
+                    <div class="education-info">
+                        <p>Bachelor's Degree in Electrical Engineering<br>
+                           <h3>Pulchowk Engineering Campus, Pulchowk</h3><br>
+                            Expected Graduation: <span class="graduation-year">[2026]</span></p>
+                    </div>
+        </section><br><hr><br><br>
+                
+    
+        <section class="work-experience">
+            <h3>Work Experience</h3>
+            <div class="experience-item">
+                <h4>Freelance Web Developer</h4>
+                <p>Self-employed, [Dec 2022 - Present]</p>
+                <p>Developed and maintained websites for various clients, focusing on intuitive user interfaces and seamless user experiences.</p>
+            </div>
+        </section>
+        
 
 
-        Our goal is to make studying for the NEB Board Exam as stress-free as possible by providing you with all the necessary resources in one place. Whether you're looking for study materials or practice questions, our page has got you covered.
-        <br>
-        <br>
-
-
-        In addition to helping students prepare for the NEB Board Exam, our page is also useful for those preparing for IOE and CEE entrance exams. With our user-friendly interface and a wealth of information, you'll find everything you need to excel in your exams.
-        <br>
-        <br>
-
-        So if you're a Grade 12 student looking to ace your upcoming exams, look no further than our page!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+                    <section class="portfolio">
+                        <h2>Projects</h2>
+                        <h2 style="color: #1434A4">Web Development Projects</h2> 
+                <div class="portfolio-container">    
+                    <div class="portfolio-itemport">
+                        <img src="img2/project1.png" alt="Portfolio Project 1">
+                        <h3><a href="samton.html" target="_blank">Samton Physics</a></h3>
+                        <p>Web designed to help NEB students study for physics course free of cost in a effective UI interface with helpful materials and suggestions.</p><br>
+                        <p><strong>Technologies Used:</strong>HTML, CSS, Bootstrap</p>
+                    </div>
+                    <div class="portfolio-itemport">
+                        <img src="img2/project2.png" alt="Portfolio Project 2">
+                        <h3><a href="generator.html" target="_blank">Question Generator Software</a></h3>
+                        <p>Serves as a tool to edit and write mathematical expressions and generate questions for the IOE CBT exam model software and other mcq exams easily. Also provides ease to write the HTML and JS code dynamically.</p><br>
+                        <p><strong>Technologies Used:</strong> JavaScript, HTML, CSS, Other Libraries</p>
+                    </div>
+                    <div class="portfolio-itemport">
+                        <img src="img2/project3.png" alt="Portfolio Project 3">
+                        <h3><a href="prelogin.html" target="_blank">IOE CBT Exam Interface</a></h3>
+                        <p>Developed as a replica for engineering aspirants to have a real experience of the IOE CBT exam UI.</p><br>
+                        <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+                    </div>
+                    <div class="portfolio-itemport">
+                        <img src="img2/projectport.png" alt="Portfolio Project 4">
+                        <h3><a href="index.html">Portfolio Website</a></h3>
+                        <p>Designed and developed my personal portfolio website to showcase my skills and experiences.</p><br>
+                        <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, jQuery</p>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="interests">
+               <div><h2 style="color: #1434A4;">Interests</h2></div> 
+                <div class="interest-item">
+                    <i class="fab fa-html5"></i>
+                    <i class="fab fa-js"></i>
+                    <i class="fab fa-css3"></i>
+                    <h3>Front-End Development</h3>
+                    <ul>
+                        <li>Languages: HTML, CSS, JavaScript</li>
+                        <li>Other Languages: Python, C</li>
+                        <li>Frameworks/Libraries: React, Bootstrap</li>
+                        <li>Tools: Visual Studio Code, Git</li>
+                    </ul>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-atom"></i>
+                    <i class="fas fa-rocket"></i>
+                    <h3>Scientific Exploration</h3>
+                    <ul>
+                        <li>Physics: Quantum Mechanics, Relativity, Astrophysics, Lagrangian Mechanics , Hamiltonian Mechanics</li>
+                        <li>Mathematics: Calculus, Linear Algebra, Number Theory, Vector Analysis</li>
+                    </ul>
+                </div>
+                <div class="interest-item">
+                    
+                    <i class="fas fa-microchip"></i>
+                    <h3>Engineering Enthusiast</h3>
+                    <ul>
+                        <li>Technologies: AI, natural languages</li>
+                        <li>Electronics: Arduinos, Circuit Design, Digital Logic, Microcontrollers</li>
+                        <li>Renewable Energy: Solar Power, Wind Energy</li>
+                    </ul>
+                </div>
+            </section>
+            
+            
+                    <br><br><br>
+    
+                
+                    <div style="color: #022954;"><h2>Social Channel || Pages</h2></div>
+                    <div class="social-media-container">
+                        
+                        <div class="channel">
+                            <img src="https://drive.google.com/uc?export=view&id=1dKsxF03NBfWCaHR1Q434L7MqWah42yEo" alt="" style="height: 50px; width: 50px; border-radius: 50%;">
+                            <strong>The stellar secrets</strong><br>
+                            Started a YouTube channel to share my passion for astrophotography and astronomy with the world.<br>
+                            
+                            <a href="https://www.youtube.com/@StellarSecrets_" target="_blank" class="youtube-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                        <div class="conscious-arts">
+                            <img src="https://drive.google.com/uc?export=view&id=1ZGFF6_CVYPH7gdEqtkyrrpC8udozAN0f" alt="" style="height: 50px; width: 50px; border-radius: 50%;">
+                            <strong>The Conscious Arts</strong><br>
+                            Explore the world of literature, quotes, and motivation.<br>
+                            
+                            <a href="https://www.facebook.com/Theconciousarts/" target="_blank" class="facebook-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                        <div class="perspective">
+                            <img src="https://drive.google.com/uc?export=view&id=1tsAwPGxeAXs7z8OK62tO8vKgPm8PxRAF" alt="" style="height: 50px; width: 50px; border-radius: 50%;">
+                            <strong>The Perspective</strong><br>
+                            
+                            Bringing social awareness and entertainment together.<br>
+                             
+                            <a href="https://www.facebook.com/perspectivenotions?mibextid=ZbWKwL" target="_blank" class="facebook-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    
+                    <br><br><br><br>
+                   <section class="bodysection">
+                    <h2 style="color: #022954; box-shadow: 0 3px 6px rgba(26, 81, 132, 0.2); padding: 5px;">In the Realm of Art: A Symphony of Mindful Creation</h2>
+                    <div style="text-align: justify;">In the realm of art, I find my passion and purpose—a symphony of creativity orchestrates within me. My artistic journey begins within the corridors of my mind, where the world's essence is captured before being meticulously transcribed onto paper. Each stroke of the brush is an intentional dance, a mindful expression of my innermost thoughts and ideas. This process, intricate and meditative, brings me immense delight. Painting is not a mere hobby; it's a profound connection, a transcendental experience that transforms my perceptions into tangible, vibrant creations. It's in this act of creation that I discover boundless joy and fulfillment, embracing the artistry that defines me.</div>
+                    <div class="gallery">
+                        
+                        <div class="artwork" data-src="https://drive.google.com/uc?export=view&id=1uULf1rqncAPcetKbXFV1XZsNgWQ9ke9G">
+                            <img src="https://drive.google.com/uc?export=view&id=1uULf1rqncAPcetKbXFV1XZsNgWQ9ke9G" alt="Painting 1">
+                            <div class="description">
+                                
+                                <p style="font-weight: bold;">Aug 14 2021</p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="artwork" data-src="https://drive.google.com/uc?export=view&id=1bWnjmAUhVjH91m_jMgh2zKu594RP8X1W">
+                            <img src="https://drive.google.com/uc?export=view&id=1bWnjmAUhVjH91m_jMgh2zKu594RP8X1W" alt="Painting 2">
+                            <div class="description">
+                                
+                                <p style="font-weight: bold;">July 06 2015</p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="artwork" data-src="https://drive.google.com/uc?export=view&id=1gK978IVxfRm3nxLcn0zd372659jIed2z">
+                            <img src="https://drive.google.com/uc?export=view&id=1gK978IVxfRm3nxLcn0zd372659jIed2z" alt="Painting 3">
+                            <div class="description">
+                                
+                                <p style="font-weight: bold;">Dec 10 2022</p>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="artwork" data-src="https://drive.google.com/uc?export=view&id=1tXwbyWJwvqtJBmVICgSsFGuG2sDqehYb">
+                            <img src="https://drive.google.com/uc?export=view&id=1tXwbyWJwvqtJBmVICgSsFGuG2sDqehYb" alt="Painting 4">
+                            <div class="description">
+                                
+                                <p style="font-weight: bold;">Dec 18 2022</p>
+                                <p></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Add more artwork divs as needed -->
+                    </div>
+                
+                    <div class="modal" id="modal">
+                        <div class="modal-content">
+                            <span class="close" id="close">&times;</span>
+                            <img src="" alt="Painting" id="modal-img">
+                        </div>
+                    </div>
+                
+                    
+                   </section>
+                    
+    
+                  
+    
       </div>
     </div>
-  </div>
-</div>
-
-<h1 class="text-center mt-4 text-decoration-underline" id="syllabus">See the Syllabus for physics of Grade-12(NEB)</h1>
-
-<div id="pdfRenderer"><iframe allow="autoplay" class="container  mt-4 p-3" style="border: 2px solid black;" src="https://drive.google.com/file/d/1OO9VRMrgSpA-f8fKg_PaF7W1XXtrmA9V/preview" frameborder="0" height="470vh" width="100%"></iframe></div>
-
-<br>
-<hr>
-
-<h1 class="text-center mt-4 text-decoration-underline" id="grid">See the specification grid and marking scheme for Grade-12</h1>
-<div class="container">
-  <div class="row">
-<div class="text-center col-lg-4" ><img style="border: 2px solid rgb(11, 11, 113);" src="img/specification-grid.webp" alt="this is specification grid" width="350vw" height="auto"></div>
-
-<div class="text-center col-lg-6" ><img style="border: 2px solid rgb(11, 11, 101);" src="img/marking scheme.webp" alt="this is marking scheme" width="350vw" height="auto"></div>
-</div>
-</div>
-
-
-<br>
-<hr>
-
-<h1 class="text-center mt-4 text-decoration-underline" id="model">See the model question for Grade-12 (2079-updated)</h1>
-
-
-<div id="pdfRenderer"><iframe allow="autoplay" class="container  mt-4 p-3" style="border: 2px solid black;" src="https://drive.google.com/file/d/1suX3v93mC9u2jpVU0JdH0vuqNPWhdg_D/preview" frameborder="0" height="470vh" width="100%"></iframe></div>
-
-
-
-
-
-<div class="alert alert-success container" role="alert">
-  <h4 class="alert-heading">A quick tip (1)</h4>
-  <p>Make your plan of studying after understanding the syllabus, the teaching hours and the marks that the lesson carries. Also see if you have covered all the content properly.If we haven't seen the syllabus before the exam we get more confused and the mind-map is blurry.You should also practise as many questions as you can acoording to the syllabus.</p>
-  <hr>
-  <p class="mb-0">Thank you !</p>
   
-</div>
+      <div id="Contact" class="content-section">
+        <section class="connect-section">
+            <h2>Feel Free to Contact!</h2>
+            <p>I am always open to exciting opportunities, collaborations, and discussions related to scientific topics exploration and front-end development or programming stuffs. Feel free to reach out:</p>
+            <div class="contact-options">
+                <div class="contact-option">
+                    <a href="mailto:samratmanandhar314@gmail.com">
+                        <i class="far fa-envelope"></i>
+                        Email now
+                    </a>
+                </div>
+                <div class="contact-option">
+                    <a href="https://github.com/Samrat1201" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+                <div class="contact-option">
+                <a href="https://www.youtube.com/@samratmanandhar" target="_blank"   >
+                    <i class="fab fa-youtube"></i>
+                    Youtube
+                </a>
+            </div>
+                
 
+                
+            <div class="contact-option">
+                <a href="https://www.facebook.com/samrat.manandhar.79" target="_blank"   >
+                    <i class="fab fa-facebook"></i>
+                    Facebook
+                </a>
+            </div>  
 
-<div class="card text-center container"  id="author">
-  <div class="card-header">
-   About author
-  </div>
-  
-  <div class="card-body">
-    <img class="float-start float-lg-none" src="img/dp round.jpg" alt="" width="150px" height="150px">
-    <h5 class="card-title ">Samrat Manandhar</h5>
-    <p class="card-text">An electrical engineering student || Cosmic Enthusiast</p>
-    <div class="sm-handle" id="sm-handle01">
-      <a class="yt-handle" style="color: black;" href="https://www.youtube.com/@samratmanandhar" target="_blank"><i class="fa fa-youtube fa-lg "></i></a> &nbsp;| &nbsp;
-
-      <a class="fb-handle" style="color: black;"  href="https://www.facebook.com/samrat.manandhar.79" target="_blank"><i class="fa fa-facebook"></i></a> &nbsp;| &nbsp;
-
-      <a class="insta-handle" style="color: black;"  href="https://www.instagram.com/samrat_manandhar_/" target="_blank"><i class="fa fa-instagram"></i></a> &nbsp;| &nbsp; 
-
-      <a class="tweet-handle" style="color: black;"  href="https://twitter.com/manandharsamrat" target="_blank"><i class="fa fa-twitter"></i></a>
-  
+                
+                <div class="contact-option">
+                <a href="https://www.instagram.com/samrat_manandhar_/" target="_blank"   >
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+            </div>
+                
+                <div class="contact-option">
+                <a href="https://twitter.com/manandharsamrat" target="_blank"  >
+                    <i class="fab fa-twitter"></i>
+                    Twitter
+                </a>
+            </div>
+            </div><br><p>Have a good time!</p>
+            </div>
+            
+        </section>
+        
+    </div>
+</section>
       </div>
-    <br>
-    <br>
+
+    </div>
+  
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Samrat Manandhar</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/samrat.manandhar.79" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/manandharsamrat" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/samrat_manandhar_/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                
+            </div>
+        </div>
+    </footer>
     
 
-    <p>Welcome to our page dedicated to helping Grade 12 students prepare for their upcoming NEB Board Exam! As the creator of this page, I am committed to providing students with a comprehensive resource to make their exam preparation easier.</p>
-
-     <p> Our page includes important questions, comprehensive syllabus coverage, and model question papers to help students excel in their exams. It is also designed to be user-friendly and useful for students preparing for IOE and CEE entrance exams.</p>
-      
-     <p> Your feedback is valuable to us, and we are always looking for ways to improve our page. If you have any suggestions or comments, please do not hesitate to contact us. Additionally, if you are facing any academic challenges, feel free to consult me for assistance.</p>
-      
-     <p> Thank you for visiting our page, and we hope it will be a useful resource for your exam preparation.</p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
+<script>
+  $(document).ready(function() {
+    // Function to create hidden buttons and append them to the dropdown container
+    function createHiddenButtons() {
+        var buttons = [
+            { id: 'aboutButton', text: 'About', href: '#Aboutme' },
+            { id: 'portfolioButton', text: 'Portfolio', href: '#Portfolio' },
+            { id: 'contactButton', text: 'Contact', href: '#Contact' },
+            
+        ];
 
-  </div>
-  <div class="card-footer text-muted">
-    <a class="nav-link active text-info" aria-current="page" href="#">Go Home</a>
-  </div>
+        var dropdownContainer = $('#dropdownButtons');
+        buttons.forEach(function(button) {
+            var newButton = $('<a>', {
+                'class': 'scroll-link hidden',
+                'id': button.id,
+                'href': button.href,
+                'text': button.text
+            });
+             // Apply CSS styles to the new button
+             newButton.css({
+                'padding': '10px', 
+                'margin': '5px', 
+                
+            });
+            dropdownContainer.css({
+                'padding': '10px', 
+                'margin': '8px',
+                'border-radius': '8px',  
+                
+            });
+            newButton.click(function(event) {
+    event.preventDefault();
+    var targetSectionId = $(this).attr("href").substring(1); // Remove the '#' from href
+    var targetSection = $("#" + targetSectionId);
 
-</div>
+    // Check if the content section already exists
+    if (targetSection.length) {
+        // If the section is already present, scroll to it directly
+        $('html, body').animate({
+            scrollTop: targetSection.offset().top
+        }, 500);
+    } else {
+        event.preventDefault();
+            var targetSectionId = $(this).attr("href").substring(1); // Remove the '#' from href
+            var targetSection = $("#" + targetSectionId);
+            
+            // Toggle visibility of the clicked section
+            targetSection.toggle();
+            
+            // Scroll to the clicked section if it is visible
+            if (targetSection.is(":visible")) {
+                $('html, body').animate({
+                    scrollTop: targetSection.offset().top
+                }, 500);
+            }
+    }
+});
+            dropdownContainer.append(newButton);
+        });
+    }
+
+    // Toggle dropdown and hidden buttons when Main Page Content button is clicked
+    $('#mainPageButton').on('click', function() {
+        var dropdownContainer = $('#dropdownButtons');
+        if (dropdownContainer.children().length === 0) {
+            // If buttons are not created yet, create and append them
+            createHiddenButtons();
+        } else {
+            // If buttons are already created, remove them and hide the dropdown
+            dropdownContainer.empty();
+            dropdownContainer.css({
+                'padding': '0px', 
+                'margin': '0px', 
+                
+            });
+        }
+        // Toggle dropdown visibility
+        dropdownContainer.toggleClass('hidden');
+    });
+    
+});  
+
+const text = "I'm Samrat Manandhar, a passionate front-end developer with a deep love for physics and mathematics.<b> Currently pursuing my studies in Electrical Engineering at Pulchowk Engineering Campus, Pulchowk</b>, I am driven by my curiosity for scientific and engineering exploration. I believe in the power of technology to transform ideas into reality and create out of creation. &#128521;";
+
+let index = 0;
+let animated = false;
+
+function type() {
+    const typedTextElement = document.getElementById('typed-text');
+    typedTextElement.innerHTML = text.slice(0, index);
+
+    if (index < text.length) {
+        index++;
+        setTimeout(type, 21); // Adjust the typing speed by changing the timeout value (in milliseconds)
+    }
+}
+
+function startTypingAnimation() {
+    if (!animated) {
+        type();
+        animated = true;
+    }
+}
+
+window.addEventListener('scroll', function() {
+    const targetElement = document.getElementById('typed-text');
+    const targetOffset = targetElement.offsetTop;
+    const windowOffset = window.scrollY + window.innerHeight;
+
+    if (windowOffset > targetOffset) {
+        startTypingAnimation();
+    }
+});
 
 
-<div id="cmt"><iframe class="container-fluid  mt-4 p-3" style="border: 2px solid rgb(6, 65, 108); border-radius: 10px;" src="https://docs.google.com/forms/d/e/1FAIpQLSdh9kjrpt3zs6--dMhpRwbh2RJfq1BPE05VdEkJQ3v3NKAntg/viewform?usp=sf_link" frameborder="0" height="470vh" width="100%"></iframe></div>
+
+</script>
+
+<script>// Get the button element
+    var goToTopBtn = document.getElementById("go-to-top-btn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            goToTopBtn.classList.add("show");
+        } else {
+            goToTopBtn.classList.remove("show");
+        }
+    };
+    
+    // Smooth scroll function
+    function scrollToTop() {
+        var currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentPosition > 0) {
+            window.requestAnimationFrame(scrollToTop);
+            window.scrollTo(0, currentPosition - currentPosition / 8);
+        }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document smoothly
+    goToTopBtn.onclick = function() {
+        scrollToTop();
+    };
+    </script>
 
 
 
-<ul class="nav container-fluid p-3 bg-secondary">
-  <li class="nav-item">
-    <a class="nav-link active text-white" aria-current="page" href="mailto:samratmanandhar314@gmail.com">Contact us via email</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-white" href="#">Copyright || Samrat Manandhar</a>
-  </li>
- 
- 
-</ul>
 
 
 
 
 
+    <script src="indexpage.js"></script>
+</body>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
 </html>

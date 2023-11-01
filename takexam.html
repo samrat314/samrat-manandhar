@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOE Exam Model</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img2/favicon2-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img2/favicon2-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 50px;
+    width: 200px;
+    z-index: 1001;
+    border: 5px solid rgb(220, 217, 217);
+    text-align: center;
+}
+
+.containersamton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    height: 110px;
+    text-align: center;
+    z-index: 1001;
+}
+
+.warning-box, .samrat{
+    font-size: 12px;
+}
+
+.warning-box{
+    margin-top: 13px;
+}
+
+
+
+
+
+button {
+    cursor: pointer;
+    background-color: rgb(239, 238, 238);
+    border: 1px solid rgb(18, 78, 156);
+    color: rgb(63, 63, 63);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-top: 10px;
+    
+}
+
+
+
+.warn,
+.warn::before,
+.warn::after
+{
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.warn {
+  font-size: 20px;
+  color: transparent;
+}
+
+.warn.warning {
+  display: inline-block;
+
+  top: 0.225em;
+
+  width: 1.15em;
+  height: 1.15em;
+
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+  border-radius: 0.625em;
+}
+
+.warn.warning::before {
+  content: "";
+  display: block;
+  top: -0.08em;
+  left: 0.0em;
+  position: absolute;
+  border: transparent 0.6em solid;
+  border-bottom-color: #fd3;
+  border-bottom-width: 1em;
+  border-top-width: 0;
+  box-shadow: #999 0 1px 1px;
+}
+
+.warn.warning::after {
+  display: block;
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+  width: 100%;
+  padding: 0 1px;
+  text-align: center;
+  font-family: "Garamond";
+  content: "!";
+  font-weight: bolder;
+  font-size: 0.65em;
+  font-weight: bold;
+  color: #333;
+}
+
+.samton{
+    background-color: #ffffff;
+}
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="samrat"><h3>IOE Entrance Model Software</h3></div>
+    <div class="secondbody2">
+        <div class="navbar">
+            <div class="logo-container">
+                <img src="tu_logo.png" alt="TU Logo" class="logo">
+            </div>
+            <div class="text-column">
+                <div class="text1">Tribhuvan University</div>
+                <div class="text1">Institute of Engineering</div>
+                <div class="text1">Entrance Examination Board</div>
+            </div></div>
+            
+            <div class="exam-info">
+                <div class="blue-bar"></div>
+                <div class="text">BE/ B. Arch Online Entrance Examination</div>
+            </div>
+
+    <div class="arenawhite">
+        <br>
+    <div class="boxx">
+        <span class="samm">Welcome!</span>
+        <span class="samm1">Online Examination System</span>
+    </div>
+
+    <div class="boxx1">
+        <p class="bluegang">Examination Note: </p>
+
+    <ul class="greygang">
+        <li>You have to check radio button on correct option.</li>
+        <li>If the selcted option is wrong, 10% negative marking will be applied.</li>
+        <li>Check on next button to navigate next page.</li>
+        <li>Check on previous button to navigate previous page.</li>
+        <li>You can change the option during examination.</li>
+        <li>Information along with the time remaining, total attempted and total questions will be displayed at the top of your page.</li>
+    </ul>
+
+    <p class="greengang"><b>You can now take examination:</b></p>
+    </div>
+
+    <div class="greyboxgang">
+        <a  class="bluebuttonganglog"><b> &#128393; Take Examination</b></a>
+    </div>
+    <br><br>
+
+
+    <script src="takeexam.js"></script>
+    
+    
+</body>
+<footer class="footer">
+    <div><b>Powered By: </b></div>
+    <div>Institute of Engineering Pulchowk, Lalitpur</div>
+    <div>P.O.Box. 1175, kathmandu, Nepal Tel. 5521531</div>
+    <div>Email: entrance@ioe.edu.np</div>
+    <br>
+</footer>
+</div>
+</div>
+</html>

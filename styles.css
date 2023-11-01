@@ -1,0 +1,626 @@
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: #f1f1f1;
+    
+    
+}
+
+.secondbody{
+    margin-left: 11vw;
+    margin-right: 11vw;
+    margin-top: 8vh;
+
+}
+
+.secondbody2{
+    margin-left: 11vw;
+    margin-right: 11vw;
+    
+
+}
+
+
+.sam{
+    width: 100%;
+    background-color: #f1f1f1;
+    margin: none;
+    padding: none;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 10000;
+    font-size: 9px;
+    margin-left: none;
+    margin-right: none;
+    text-align: center;
+    color: #1484b8;
+}
+
+.samrat{
+    width: 100%;
+    background-color: #f1f1f1;
+    margin: none;
+    padding: none;
+    top: 0px;
+    font-size: 15px;
+    margin-left: none;
+    margin-right: none;
+    text-align: center;
+    color: #1484b8;
+}
+
+@media only screen and (max-width: 700px) {
+    .sam {
+        position: static;
+           
+    }
+
+    .secondbody{
+        
+        margin-top: 1vh;
+    
+    }
+
+    
+
+
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .secondbody {
+        margin-left: 1%;
+        margin-right: 1%; 
+           
+    }
+    .secondbody2 {
+        margin-left: 1%;
+        margin-right: 1%; 
+           
+    }
+    .headtitle {
+        font-size: 15px;
+    }
+
+    
+  }
+
+
+
+
+
+input[type="radio"] {
+    accent-color: rgb(0, 5, 0);
+    cursor: pointer;
+ }
+
+
+
+
+
+.boxx{
+    margin: 20px;
+    margin-top: 5px;
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    background-color: #056c9c ;
+    border-radius: 10px;
+    text-align:left;
+}
+
+.boxx1{
+    margin: 20px; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bluegang{
+    color: #056c9c;
+}
+
+.greygang{
+    color: #4a4a4a;
+    font-size: small;
+}
+
+.greengang{
+    color: #046131;
+    
+}
+
+.greyboxgang{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #f1f1f1;
+    padding: 30px;
+    margin: 10px;
+}
+
+.bluebuttongang{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    text-decoration: none;
+    border: none;
+    background-color: #056c9c ;
+    color: #ffffff;
+    padding: 6px;
+    border-radius: 4px;    
+}
+
+.bluebuttonganglog{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    text-decoration: none;
+    border: none;
+    background-color: #056c9c ;
+    color: #ffffff;
+    padding: 6px;
+    border-radius: 4px; 
+    cursor: pointer;   
+}
+
+button:hover{
+    cursor:grab/pointer;
+    
+}
+.arenawhite{
+    background-color: #ffffff;
+}
+
+
+/*these sam samm samm1 are all parts of takerxam.html*/
+.samm, .samm1{
+    color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+.samm{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.samm1{
+    font-size: 13px;
+}
+
+.navbar {
+    background-color: #fff;
+    display: flex;
+    
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+.logo {
+    width: 120px;
+}
+
+.text-column {
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.text1 {
+    
+    padding-top: 15px;
+    color: #1484b8;
+    
+    }
+
+.text {
+    font-size: 20px;
+    color: #1484b8;
+    
+    }
+
+.exam-info {
+    background-color: #056c9c;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+.exam-info .text {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #f1f1f1;
+}
+
+
+.fixed-section {
+
+    position: fixed;
+    top: 63px;
+    right: 11.6vw;
+    height: 140px;
+    width: 315px;
+    background-color: #056c9c;
+    padding-left: 15px;
+    padding-right: 0px;
+    padding-top: 5px;
+    margin: 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  
+    .fixed-section{
+        position: fixed;
+        top: 30px;
+        right: 10px;
+ }
+        
+ .logo{
+    width: 100px;
+}}
+
+
+
+
+
+.student-info {
+    display: flex;
+    text-align: left;
+    color: #ffffff;
+    
+    
+}
+
+.student-photo {
+    
+    width: 80px;
+    height: 90px;
+    background-color: #ffffff;
+    margin-right: 15px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    
+    
+    
+}
+
+
+
+
+.info {
+    flex: 1;
+}
+
+.info-item {
+    margin-bottom: 3px;
+    
+}
+.info-item1 {
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+#studentName, #rollNumber{
+    font-size: 18px;
+}
+#rollNumber{
+    margin-right: 20px;
+}
+
+#time{
+    font-size: 20px;
+    padding : 15px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 80px auto 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(90, 90, 90, 0.1);
+}
+
+.questionare{
+    background-color: #ffffff;
+    padding-left: 10%;
+    padding-right: 8%;
+}
+.question {
+    margin-bottom: 20px;
+    color: rgb(47, 47, 47);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+.start-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #295fe7;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#timer {
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+/* Styles for navigation buttons and go to top button */
+.navigation-buttons {
+    display: flex;
+    
+}
+
+.prev-button,
+.next-button,
+.go-to-top-button {
+    background-color: #ffffff;
+    color: rgb(53, 52, 52);
+    padding: 8px ;
+    border: 0.5px solid black;
+    border-radius: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 10s ease;
+}
+
+.prev-button:hover,
+.next-button:hover,
+.go-to-top-button:hover
+{
+    color: #0056b3;
+}
+
+.gototop{
+    display: flex;
+    justify-content: end;
+    background-color: #f1f1f1;
+    padding: 30px;
+    margin: 0px;
+    border-radius: 3px;    
+}
+
+.gototopsam{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f1f1f1;
+    padding: 30px;
+    margin: 0px;
+    border-radius: 3px;    
+}
+
+.submit-button{
+    
+    align-items: flex-start !important;
+}
+
+.gototopbutton, .submit-button{
+    cursor: pointer;
+    
+    text-decoration: none;
+    border: none;
+    background-color: #0056b3;
+    color: #ffffff;
+    padding: 6px;
+    border-radius: 4px;
+    
+}
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    background-color: #1484b8;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+/*matrx on the real html code, add this in that real file too*/
+/*Add this in the original html file*/
+.matrix {
+    position: relative;
+}
+.matrix:before, .matrix:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 1px solid #000;
+    width: 6px;
+    height: 100%;
+}
+.matrix:before {
+    left: -6px;
+    border-right: 0;
+}
+.matrix:after {
+    right: -6px;
+    border-left: 0;
+}
+
+td{
+    padding: 5px;
+}
+
+
+/* display fractions*/
+/*Add this in the original html file*/
+.frac {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    letter-spacing: 0.001em;
+    text-align: center;
+}
+.frac > span {
+    display: block;
+    padding: 0.1em;
+}
+.frac span.bottom {
+    border-top: thin solid black;
+}
+.frac span.symbol {
+    display: none;
+} 
+
+
+
+/* CSS */
+
+
+#viewUnansweredBtn{
+    display: none;
+    cursor: pointer;
+    background-color: #056c9c;
+    color: #f9f9f9;
+    border: none;
+    margin: none;
+}
+.popup-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    color: rgb(146, 146, 146);
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 45vw;
+    
+}
+
+#close-unanswered {
+    color: rgb(146, 146, 146);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    justify-content: left;
+    align-self: flex-end;
+}
+
+#close-unanswered:hover,
+#close-unanswered:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#closeUnansweredBtn {
+    border-radius: 8px;
+    background-color:  #056c9c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+.leftgang{
+    justify-content: left;
+    align-self: flex-end;
+}
+
+#closeUnansweredBtn:hover {
+    background-color:  #055276;
+}
+
+
+
+/*submitbutton*/
+.popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 10px;
+    padding-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    
+    display: flex;
+    z-index: 1000;
+}
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black overlay */
+    display: none;
+    z-index: 999; /* ensure the overlay appears above other elements */
+}
+
+
+
+.submittalcross{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(95, 95, 95);
+}
+.submitcross{
+    align-self: flex-end;
+    font-size: 15px;
+    color: grey;
+}
+
+
+
+
+
+
+
+
+

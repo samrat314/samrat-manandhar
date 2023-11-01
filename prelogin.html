@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-login Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img2/favicon2-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img2/favicon2-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <style>
+    
+    
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background-color: #e2e1e1;
+    }
+     
+    #openModalBtn{
+        border-radius: 10px;
+        margin: 50px;
+        margin-top: 5px;
+        font-size: 20px;
+        border: 1px solid rgb(232, 226, 226);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        
+    }
+    .samtonbox{
+        display: grid;
+        justify-content: center;
+
+    }
+
+
+
+    
+
+    
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        border-radius: 10px;
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    label,
+    input,
+    button {
+        margin-bottom: 10px;
+    }
+    
+    button {
+        background-color: #066ca3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #074375;
+    }
+    .fixed-sectionz {
+height: 155px;
+width: 315px;
+background-color: #056c9c;
+padding-left: 15px;
+padding-right: 0px;
+padding-top: 5px;
+margin: 50px;
+margin-top: 10px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 9);
+border-radius: 16px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+}
+
+.beginexam{
+    margin: 20px;
+    background-color: rgb(3, 59, 3);
+    box-shadow: 0 5px 10px rgba(17, 50, 8, 0.9);
+    border-radius: 10px;
+    border: 1px solid whitesmoke;
+}
+.beginexam:hover{
+    background-color: rgb(30, 141, 30);
+    box-shadow: 0 5px 10px rgba(11, 48, 1, 0.9);
+    color: black;
+    
+    
+}
+
+.hovertext {
+        position: relative;
+        display: inline-block;
+        
+    }
+
+    .button-text {
+        
+        display: none;
+        position: absolute;
+        top: 100%;
+        width: 300px;
+        background-color: #e1dfdf;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 10px;
+        color: black;
+        border: 1px solid #939090;
+        border-radius: 5px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    }
+    
+    .button-text2 {
+        z-index: 1001;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: -40px;
+        width: 300px;
+        background-color: #e1dfdf;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 10px;
+        color: black;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 15px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    .hovertext:hover{
+        color: rgb(17, 3, 1);
+        
+    }
+    #viewUnansweredBtn:hover{
+        color: rgb(19, 3, 1);
+       
+    }
+
+    .hovertext:hover .button-text {
+        display: block;
+        
+    }
+
+    .hovertext:hover .button-text2 {
+        display: block;
+    }
+
+    @media only screen and (min-width: 900px) {
+  
+        .button-text2 {
+        
+        left: -300px;}
+        
+}
+      
+
+    </style>
+</head>
+
+<body>
+<div class="samtonbox">
+    <h3 style="text-decoration: underline; align-self: center;">BEFORE YOU START YOUR EXAM</h3>
+    <div><b>(<span style="color: rgb(215, 6, 6);">You need not to input all these in IOE examination</span>, this is just to display your name and roll number <span style="color: rgb(215, 6, 6);">for now only.</span>)</b></div>
+    <br>
+    
+</div>
+<div class="samtonbox">
+    <div style="margin-left: 50px; color: grey;">Click here to input your Name and Roll Number.</div>
+    <button id="openModalBtn">Input Name, Roll number and your photo.</button>
+
+
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="userForm" enctype="multipart/form-data">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="rollNumber">Roll Number:</label>
+                <input type="text" id="rollNumber" required>
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" accept="image/*">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+<div style="margin-left: 50px; color: grey;">The container you see here,</div><div style="margin-left: 50px; color: grey;">will appear in every page of questions, at topmost corner.</div>
+    <div class="fixed-sectionz">
+        <div class="student-info">
+            
+            <div class="info" style="cursor: pointer;">
+                <div class="hovertext">
+                <div class="info-item">
+                    <span id="studentName"></span>&nbsp;&nbsp;<span id="rollNumber">(2022-2279)</span>
+                </div>
+                <div class="button-text2">Your name and roll number will appear here after you login into ioe exam. <br><strong>For now please input it from above button.</strong><hr><div style="color: #074375;">There is some technical issue with roll number,don't worry, it will be updated in next page.</div></div>
+            </div>
+                <div class="hovertext">
+                <div class="info-item1" style="cursor: pointer;">
+                    Time Remaining: <span style="font-size: 18px;">2:00:00</span>
+                    <div class="button-text2">The timer will run upto 2 hours, after the time is up, the exam will automatically be submitted.       <b>keep your eyes timely on it.</b></div>
+            </div>
+                </div>
+                <div class="hovertext">
+                <div class="info-item" id="answeredQuestionsText" style="cursor: pointer;">
+                    You have answered '0' out of '100'
+                    <div class="button-text2">This count will increment with each question you answer.<b>Remember after you check a radio in a option, you can't undo it, but better to attempt all questions.</b></div></div>
+                </div>
+                <div class="hovertext">
+                <button id="viewUnansweredBtn" style="display: block;">View unanswered questions</button>
+                <div class="button-text">This "view unanswered questions" button will only appear after you answer nearly 50 questions. <b>Click to see.</b></div>
+            </div>
+                <div id="popupContainer" class="popup-container">
+                    <div class="popup-content">
+                        
+                        <span id="close-unanswered" onclick="closePopupz()">&times;</span>
+                        <div id="unansweredQuestionsList" style="color: black;"></div>
+                        <div><hr></div>
+                        <div class="leftgang">
+                        <button id="closeUnansweredBtn" onclick="closePopupz()">OK</button>
+                    </div>
+                    </div>
+                </div>
+                
+            </div><div class="hovertext"><div class="student-photo" style="cursor: pointer;"></div>
+            <div class="button-text">Your photo will appear here.</div></div>
+    
+        </div>
+        <br><br>
+
+
+        <button class="beginexam"><a href="login.html"><b>Enter IOE Exam Interface</b></a></button>
+        <div style="color: #1f5c22;font-size: larger; font-weight: bolder; margin-top: 20px;">Goodluck!</div>
+    </div>
+    
+    
+    
+
+    <script src="script.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("openModalBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var userForm = document.getElementById("userForm");
+    
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+    
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    
+        userForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value;
+            var rollNumber = document.getElementById("rollNumber").value;
+            var imageFile = document.getElementById("image").files[0];
+    
+            if (name && rollNumber && imageFile) {
+                // Save the data to localStorage
+                localStorage.setItem("studentName", name);
+                localStorage.setItem("rollNumber", rollNumber);
+    
+                // Save the image to localStorage (using FileReader to convert to base64)
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    localStorage.setItem("studentImage", event.target.result);
+                    // Submit the form and refresh the page
+                    userForm.submit();
+                                    // After saving data, reload the page
+                location.reload();
+                    
+                    // Note: If you want to refresh without submitting the form, use location.reload() instead
+                };
+                reader.readAsDataURL(imageFile);
+    
+                // Close the modal
+                modal.style.display = "none";
+            } else {
+                alert("Please enter name, roll number, and upload an image.");
+            }
+        });
+    
+    
+    
+
+  
+        
+   
+ 
+
+});
+  
+    
+     
+    </script>
+    <script>
+           // Retrieve the data from localStorage
+    var storedName = localStorage.getItem("studentName");
+    var storedRollNumber = localStorage.getItem("rollNumber");
+    var storedImage = localStorage.getItem("studentImage");
+
+    // Check if the data exists in localStorage
+    if (storedName && storedRollNumber && storedImage) {
+        // Update the displayed name and roll number on the second page
+        document.getElementById("studentName").textContent = storedName;
+        document.getElementById("rollNumber").textContent = "(" + storedRollNumber + ")";
+
+        // Update the student photo
+        var studentPhotoDiv = document.querySelector(".student-photo");
+        var img = document.createElement("img");
+        img.src = storedImage;
+        img.alt = "Student Photo";
+        img.style.maxWidth = "80px";
+        img.style.maxheight = "90px";  // You can adjust the maximum width as needed
+        studentPhotoDiv.appendChild(img);
+    } else {
+        document.getElementById("studentName").textContent = 'Input your Name';
+        document.getElementById("rollNumber").textContent = "(Roll-Number)";
+    }
+    
+    </script>
+</body>
+
+</html>

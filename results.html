@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Results</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img2/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img2/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            max-height: 100vh;
+            max-width: 110vw;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-gap: 10px;
+            margin-bottom: 20px;
+            margin: 10px;
+            
+        }
+
+        .grid-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .question-container {
+            margin: 20px;
+            width: 400px;
+            padding: 20px;
+            border: 1px solid black;
+            text-align: left;
+            
+        }
+
+        .question-number {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .answer-options {
+            margin-top: 20px;
+        }
+
+        .answer-option {
+            margin-bottom: 10px;
+        }
+
+        .samton {
+            display: flex;
+            
+        }
+
+        @media only screen and (max-width: 700px) {
+            .samton {
+                display: block;
+            }
+
+            body {
+                max-height: 200vh;
+                max-width: 180vw;
+            }
+        }
+
+        @media only screen and (max-width: 1220px) and (min-width: 700px) {
+           body {
+            max-height: 160vh;
+            max-width: 200vw;}
+  
+}
+        
+
+.leaderboard-container {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.leaderboard-header h1 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.leaderboard-entry .name {
+    font-weight: bold;
+    font-size: 1.2em;
+    flex: 2;
+}
+
+.leaderboard-entry .value {
+    flex: 1;
+    text-align: right;
+}
+
+.leaderboard-entry.correct .value {
+    color: #28a745;
+}
+
+.leaderboard-entry.wrong .value {
+    color: #dc3545;
+}
+
+.leaderboard-entry.unanswered .value {
+    color: #6c757d;
+}
+
+.leaderboard-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center;"><b style="font-size: 30px; color: #0d501c;padding: 3px;">Your Results</b></div>
+    
+    <div class="samton">
+        <div class="leaderboard-container" id="leaderboard-container">
+            <div class="leaderboard-header">
+                <h1 style="font-size: 30px; color: #0d501c;">Leaderboard</h1>
+                 </div>
+        </div>
+        <div class="grid-container" id="grid-container"></div>
+        <div>
+            <div class="question-container" id="question-container">
+                <div class="question-number" id="question-number"></div>
+                <div class="question-text" id="question-text"></div>
+                <div class="answer-options" id="answer-options"></div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    var gridContainer = document.getElementById('grid-container');
+    var questionContainer = document.getElementById('question-container');
+    var leaderboardContainer = document.getElementById('leaderboard-container');
+    var userResponses = JSON.parse(localStorage.getItem('userResponses')) || {};
+    const correctAnswers = ['A', 'B', 'D', 'C', 'A', 'A', 'B', 'A', 'B', 'B',
+        'B', 'D', 'B', 'B', 'C', 'D', 'C', 'B', 'B', 'C',
+        'A', 'C', 'D', 'A', 'D', 'C', 'D', 'C', 'C', 'B',
+        'B', 'B', 'A', 'A', 'D', 'D', 'A', 'C', 'A', 'D',
+        'D', 'D', 'C', 'B', 'B', 'C', 'A', 'B', 'C', 'B',
+        'C', 'D', 'B', 'A', 'A', 'A', 'C', 'A', 'C', 'C',
+        'C', 'A', 'D', 'A', 'B', 'B', 'B', 'A', 'C', 'D',
+        'B', 'B', 'C', 'A', 'C', 'D', 'A', 'A', 'D', 'B',
+        'D', 'C', 'B', 'A', 'A', 'C', 'C', 'C', 'C', 'B',
+        'D', 'A', 'B', 'C', 'A', 'B', 'D', 'D', 'A', 'B',
+    ];
+
+    var questions = [
+    { questionNumber: 1, questionText: 'Which of the following is an open statement? ', options: ['x is a natural numbers', 'Give me a glass of water', 'Wish you best of luck', 'Good morning to all'], correctAnswer: 'A', marks: 1 , logic: 'An open sentence in math means that it uses variables, meaning that it is not known whether or not the mathematical sentence is true or false.'},
+{ questionNumber: 2, questionText: 'If A, B and C are any three sets, then A -(B ∪ C ) is equal to', options: ['(A-B) ∪ (A-C)', '(A-B) ∩ (A-C)', '(A-B) ∩ C', '(A-B) ∪ C'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 3, questionText: 'If A = <math xmlns="http://www.w3.org/1998/Math/MathML"><mfenced open="[" close="]"><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mo>-</mo><mn>2</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>4</mn></mtd></mtr><mtr><mtd><mn>9</mn></mtd><mtd><mo>-</mo><mn>12</mn></mtd><mtd><mn>2</mn></mtd></mtr></mtable></mfenced></math> then ratio of minor to co factor of the element a<sub>23</sub> is', options: ['4', '-4', '1', '-1'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 4, questionText: '(1+i)<sup>6</sup> + (1-i)<sup>6</sup> =', options: ['2<sup>6</sup>', '2<sup>7</sup>', '0', '-2<sup>7</sup>'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 5, questionText: 'The roots of the equation a(x<sup>2</sup> +1) - (a<sup>2</sup> +1)x = 0 are', options: ['a, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>a</mi></mfrac></math>', 'a. 2a', 'a, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>2a</mi></mfrac></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>a</mi></mfrac></math>, <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>2a</mi></mfrac></math>'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 6, questionText: '1-<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>2</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>3</mi></mfrac></math>-<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>4</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mi>5</mi></mfrac></math><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>±</mo></math>...', options: ['ln 2', 'log 2', '-ln 2', '-log 2'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 7, questionText: 'The coefficient of x<sup>3</sup>y<sup>4</sup> in (2x+3y<sup>2</sup> )<sup>5</sup> is ', options: ['360', '720', '240', '1080'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 8, questionText: 'If tan mθ=tan nθ, then the general value of θ will be in', options: ['AP', 'GP', 'HP', 'AGP'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 9, questionText: 'A, B, C are the angles of a triangle, then sin<sup>2</sup>A+ sin<sup>2</sup>B+ sin<sup>2</sup>C−2cosAcosBcosC=', options: ['1', '2', '3', '4'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 10, questionText: 'The equation of the line perpendicular to the line <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>x</mi><mi>a</mi></mfrac></math> - <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>y</mi><mi>b</mi></mfrac></math> = 1 and passing through the point at which it cuts x-axis, is ', options: ['<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>x</mi><mi>a</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>y</mi><mi>b</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mi>b</mi></mfrac></math> = 0', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>x</mi><mi>a</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>y</mi><mi>b</mi></mfrac></math>-<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mi>b</mi></mfrac></math> = 0', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>x</mi><mi>a</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>y</mi><mi>b</mi></mfrac></math> = 0', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>x</mi><mi>a</mi></mfrac></math>+<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>y</mi><mi>b</mi></mfrac></math>-<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mi>b</mi></mfrac></math> = 0'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 11, questionText: 'The equation of the lines passing through the origin and having slopes 3 and -1/3 is', options: ['3y<sup>2</sup>+8xy−3x<sup>2</sup> =0', '3x<sup>2</sup>+8xy−3y<sup>2</sup> =0', '3y<sup>2</sup>−8xy+3x<sup>2</sup> =0', '3x<sup>2</sup>+8xy+3y<sup>2</sup> =0'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 12, questionText: 'If the line x+2by+7=0 is a diameter of the circle x<sup>2</sup>+y<sup>2</sup>−6x+2y=0, then b=', options: ['3', '-5', '-1', '5'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 13, questionText: 'If α, β, γ are the direction angles of a line then the value of cos2α + cos2β + cos2γ =', options: ['1', '-1', '2', '0'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 14, questionText: 'The equation of the plane which is parallel to y-axis and cuts off intercepts of length 2 and 3 from x-axis and z-axis is', options: ['3x+2z=1', '3x+2z=6', '2x+3z=6', '3x+2z=0'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 15, questionText: 'The ∫sin(log x)dx is equal to', options: ['<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math>x[cos(log x) - sin(log x)] +C', 'cos(log x) - x +C', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>2</mn></mfrac></math>x[sin(log x) - cos(log x)] +C', '-cos(log x) +C'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 16, questionText: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><msqrt><mrow><mn>1</mn><mo>+</mo><mi>y</mi></mrow></msqrt><mo>+</mo><mo>&nbsp;</mo><mi>y</mi><msqrt><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow></msqrt><mo>=</mo><mo>&nbsp;</mo><mn>0</mn><mo>,</mo><mo>&nbsp;</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>n</mi><mo>&nbsp;</mo><mfrac><mrow><mi>d</mi><mi>y</mi></mrow><mrow><mi>d</mi><mi>x</mi></mrow></mfrac><mo>=</mo></math>', options: ['1+x', '(1+x)<sup>-2</sup>', '-(1+x)<sup>-1</sup>', '-(1+x)<sup>-2</sup>'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 17, questionText: 'Suppose f(x) is differentiable at x=1 and <math xmlns="http://www.w3.org/1998/Math/MathML"><munder accentunder="false"><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo>(</mo><mn>1</mn><mo>+</mo><mi>h</mi><mo>)</mo></mrow><mi>h</mi></mfrac><mo>=</mo><mn>5</mn><mo>&nbsp;</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>n</mi><mo>&nbsp;</mo><mi>f</mi><mo>\'</mo><mo>(</mo><mn>1</mn><mo>)</mo><mo>&nbsp;</mo><mi>e</mi><mi>q</mi><mi>u</mi><mi>a</mi><mi>l</mi><mi>s</mi><mo>&nbsp;</mo></math>', options: ['3', '4', '5', '6'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 18, questionText: 'The order of the differential equation of family of curves represented by an equation containing four arbitrary constants, will be', options: ['2', '4', '5', '6'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 19, questionText: 'A bag contains 4 white, 5 black and 6 red balls. If a ball is drawn at random, then what is the probability that the drawn ball is either white or red', options: ['1/2', '2/3', '2/5', '4/15'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 20, questionText: 'If mean = (3 median - mode) k, then the value of k is', options: ['1', '2', '1/2', '3/2'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 21, questionText: 'Select the pair whose dimensions are same', options: ['Pressure and Stress', 'Stress and Strain', 'Pressure and Force', 'Power and Force'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 22, questionText: 'A particle moves in a plane with constant acceleration in a direction different from the initial velocity. The path of the particle will be', options: ['st. line', 'arc of circle', 'parabola', 'ellipse'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 23, questionText: 'It is not possible to write directly on blotting paper or newspaper with ink pen', options: ['Viscosity', 'Inertia', 'Friction', 'Capilarity'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 24, questionText: 'w<sub>w</sub> is weight of 5 liter of benzene in winter and w<sub>s</sub> is that in summer. Then,', options: ['w<sub>w</sub> &gt; w<sub>s</sub>', 'w<sub>w</sub> &lt; w<sub>s</sub>', 'w<sub>w</sub> = w<sub>s</sub>', 'None'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 25, questionText: 'The amount of radiation emitted by a perfectly black body is proportional to', options: ['T', 'T<sup>2</sup>', 'T<sup>3</sup>', 'T<sup>4</sup>'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 26, questionText: 'When a plane mirror is rotated through an angle θ then the reflected ray turns through the angle 2θ then the size of the image', options: ['is doubled ', 'is halved', 'remains same ', 'becomes ∞'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 27, questionText: '>A thin convex lens of focal length 10 cm is placed in contact with a concave lens of same material and of same focal length. The focal length of combination will be', options: ['0 ', '10 cm', '20 cm', '∞'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 28, questionText: 'By Huygens\'s wave theory of light, we cannot explain the phenomenon of', options: ['Interference', 'Diffraction', 'Photoelectric effect', 'Polarization'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 29, questionText: 'The velocity of light emitted by a source S observed by an observer O, who is at rest with respect to S is c. If the observer moves towards S with velocity v, the velocity of light as observed will be', options: ['c+v', 'c-v', 'c', '<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>-</mo><msup><mi>v</mi><mn>2</mn></msup></mrow></msqrt></math>'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 30, questionText: 'A charge q is placed at the centre of the line joining two equal charges Q. The system of the three charges will be in equilibrium, if q is equal to', options: ['-Q/2', '-Q/4', 'Q/2', 'Q/4'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 31, questionText: 'The example for non-ohmic resistance is', options: ['Copper wire', 'diode', 'carbon resistance', 'tungsten wire'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 32, questionText: 'In electromagnetic induction, the induced charge in a coil is independent of', options: ['change in flux', 'time', 'resistance', 'None'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 33, questionText: 'The rest mass of the photon is', options: ['0', 'between 0 and ∞', '∞', '10<sup>7</sup> m/s'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 34, questionText: 'A photon, an electron and a uranium nucleus all have the same wavelength. The one with the most energy', options: ['photon', 'electron', 'uranium nucleus ', 'equal energy'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 35, questionText: 'In the depletion region of an unbiased P-N junction diode there are', options: ['only electrons', 'only holes', 'both electrons and holes', 'only fixed ion'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 36, questionText: 'What is the modulation index of an over modulated wave', options: ['0', '1', '&lt;1', '&gt;1'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 37, questionText: 'In a reaction the rate of reaction is proportional to its active mass, this statement is known as', options: ['Law of mass action', 'Le-Chatlier’s principle', 'Faraday law of electrolysis', 'Law of constant proportion'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 38, questionText: 'Rutherford\'s experiment on scattering of particles showed for the first time that the atom has', options: ['electrons', 'protons', 'nucleus', 'neutron'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 39, questionText: 'The oxidation number of Cl in HOCl', options: ['+1', '-1', '0', '+2'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 40, questionText: 'Ionization potential is lowest for', options: ['Halogens', 'Inert gases', 'Alkaline earth metals', 'Alkali metals'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 41, questionText: 'The minimum energy a molecule should possess in order to enter into a fruitful collision is known as', options: ['Reaction energy', 'collision energy', 'activation energy', 'threshold energy'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 42, questionText: 'The process, in which no heat enters or leaves the system, is termed as', options: ['isochoric', 'isobaric', 'isothermal', 'adiabatic'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 43, questionText: 'Among the following, identify the compound which cannot act as both oxidizing and reducing agents', options: ['H<sub>2</sub>O<sub>2</sub>', 'SO<sub>2</sub>', 'H<sub>2</sub>', 'Cl<sub>2</sub>'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 44, questionText: 'Nitrogen reacts with metal to give', options: ['nitrate', 'nitride', 'nitrite', 'doesn\'t react'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 45, questionText: 'Which of the following are formed by Xenon', options: ['XeF<sub>3</sub>', 'XeF<sub>4</sub>', 'XeF<sub>5</sub>', 'XeF<sub>6</sub>'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 46, questionText: 'Potash alum is a', options: ['complex salt', 'acid salt', 'double salt', 'normal salt'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 47, questionText: 'What are the metal ion are present in carnallite?', options: ['Mg<sup>2+</sup>, k<sup>+</sup>', 'Al<sup>3+</sup>, Na<sup>+</sup>', 'Na<sup>+</sup>, Mg<sup>2+</sup>', 'Zn<sup>2+</sup>, Mg<sup>2+</sup>'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 48, questionText: 'Calamine is', options: ['ZnS', 'ZnCO<sub>3</sub>', 'ZnSO<sub>4</sub>', 'ZnO'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 49, questionText: 'Metal which can be extracted from all the three dolomite, magnesite and carnallite is', options: ['Na', 'K', 'Mg', 'Ca'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 50, questionText: 'IUPAC name of acetyl salicylic acid is', options: ['m-benzoic acid', '2-acetoxy benzoic acid', 'p-benzoic acid', 'p-acetyl benzoic acid'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 51, questionText: 'The number of σ and π bonds in a molecule of benzene is', options: ['6σ and 9π', '9σ and 3π', '12σ and 3π', '6σ and 6π'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 52, questionText: 'Which of the following compound is expected to be most basic', options: ['aniline', 'methylamine', 'hydroxylamine', 'ethylamine'], correctAnswer: 'D', marks: 1 },
+{ questionNumber: 53, questionText: 'The phonemic transcription of word "Jacket" is', options: ['/ˈdʒækt/', '/ˈdʒækɪt/', '/ˈdʒæk:t/', '/ˈdʒæ:kɪt/'], correctAnswer: 'B', marks: 1 },
+{ questionNumber: 54, questionText: 'In the word “active” the stress falls on the __________ syllable.', options: ['1<sup>st</sup>', '2<sup>nd</sup>', '3<sup>rd</sup>', '4<sup>th</sup>'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 55, questionText: 'He phoned her after she _______ her office.', options: ['had left', 'left', 'leave', 'have left'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 56, questionText: 'I went home _____ Dashain.', options: ['at', 'in', 'during', 'on'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 57, questionText: 'What is the passive of ‘I did it.’?', options: ['It is done.', 'It is being done.', 'It was done.', 'It has been done.'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 58, questionText: 'A sentimental longing or wishful affection for a period in the past:', options: ['melancholy', 'nostalgia', 'serenity', 'tranquility'], correctAnswer: 'A', marks: 1 },
+{ questionNumber: 59, questionText: 'He is leaving country <u>for a good</u>. The underlined word means', options: ['for a better opportunity', 'for a good cause', 'forever', 'for other’s good'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 60, questionText: 'Synonym of “canny” is', options: ['obstinate', 'handsome', 'clever', 'stout'], correctAnswer: 'C', marks: 1 },
+{ questionNumber: 61, questionText: '<b>Read the passage carefully and answer (61-64):</b> <br><br> <div style="text-align: justify; padding-right: 30px;"> I believe that only one person in a thousand knows the trick of really living in the present. Most of us spend 59 minutes an hour living in the past, with regret for lost joys, or shame for things badly done both utterly useless and weakening. – or in a future which we either long for or dread. Yet the past is gone beyond repair, and every minute you spend in the vain effort to anticipate the future is a moment lost. There is only one world, the world pressing against you at this minute. There is only one minute in which you are alive, this miracle – here and now. The only way to live is by accepting every minute as an unrepeatable miracle. Which is exactly what it is – a miracle and unrepeatable. <br>Questions:</div></div><br> <div><b>61. </b>People live either in the past or in the future</div>', options: ['because they are in the habit of chewing the cud', 'because they are a prey to imaginary fears', 'because they are chained to memory and desire', 'None of these'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 62, questionText: 'What is an unrepeatable miracle?', options: ['Every moment that we live and spend', 'To repair the past', 'To crave for what is not', 'None of these'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 63, questionText: 'The attitude of the author is', options: ['romantic', 'political', 'classical', 'pragmatic'], correctAnswer: 'D', marks: 2},
+{ questionNumber: 64, questionText: 'He said to her, "Don\'t read so fast."', options: ['He told her not to read so fast.', 'He advised her don\'t read so fast.', 'He requested her not to read so fast.', 'He ordered her not to read so fast.'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 65, questionText: 'She is not only a receptionist but also an accountant. It is _____ sentence:', options: ['simple', 'compound', 'complex', 'compound-complex'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 66, questionText: 'The horse and carriage _______at the door.', options: ['are', 'is ', 'have', 'has'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 67, questionText: 'If log<sub>a</sub>m, log<sub>b</sub>m, log<sub>c</sub>m are in HP, then a,b,c are', options: ['AP', 'GP', 'HP', 'AGP'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 68, questionText: 'Eight points are chosen from a line and five from a line parallel to it. How many triangles can be formed by using these points?', options: ['220', '80', '140', '40'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 69, questionText: 'The angles A,B,C of triangle ABC are in AP and <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mi>c</mi></mfrac><mo>=</mo><msqrt><mfrac><mn>3</mn><mn>2</mn></mfrac></msqrt></math> then A =', options: ['60°', '45°', '75°', '90°'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 70, questionText: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfenced open="|" close="|"><mfrac><mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi>i</mi><mo>)</mo><mo>(</mo><mn>2</mn><mo>+</mo><mi>i</mi><mo>)</mo></mrow><mrow><mo>(</mo><mrow><mn>3</mn><mo>+</mo><mi>i</mi></mrow><mo>)</mo></mrow></mfrac></mfenced><mo>=</mo></math>', options: ['<span class="frac"><span>1</span><span class="symbol">/</span><span class="bottom">√5</span></span>', '<span class="frac"><span>2</span><span class="symbol">/</span><span class="bottom">√5</span></span>', '<span class="frac"><span>1</span><span class="symbol">/</span><span class="bottom">2</span></span>', '1'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 71, questionText: 'If 2<sup>x</sup> +2<sup>y</sup> = 2<sup>x+y</sup> then <div class="frac"><span>dy</span><span class="symbol">/</span><span class="bottom">dx</span></div> at x=y=1 is', options: ['1', '-1', '2', '-2'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 72, questionText: 'The value of <math xmlns="http://www.w3.org/1998/Math/MathML"><munderover accent="false" accentunder="false"><mo>∫</mo><mi>e</mi><mn>1</mn></munderover><mi>log</mi><mi>x</mi><mo>&nbsp;</mo><mi>d</mi><mi>x</mi></math> =', options: ['e', '1', 'e-1', '1-e'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 73, questionText: '<math xmlns="http://www.w3.org/1998/Math/MathML"><munder accentunder="false"><mi>lim</mi><mrow><mi>x</mi><mo lspace="0" rspace="0">→</mo><mi>∞</mi></mrow></munder><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>8</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt><mo>-</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn><mi>x</mi><mo>+</mo><mn>3</mn></mrow></msqrt></math>', options: ['0', '1', '2', 'doesn\'t exists'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 74, questionText: 'The area bounded by curve x<sup>2</sup> = 4ay and st. line y = 2a in square units is', options: ['<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mn>16</mn><msqrt><mn>2</mn></msqrt></mrow><mn>3</mn></mfrac><msup><mi>a</mi><mn>2</mn></msup></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>16</mn><mn>3</mn></mfrac><msup><mi>a</mi><mn>2</mn></msup></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>8</mn><msqrt><mn>3</mn></msqrt></mfrac><msup><mi>a</mi><mn>2</mn></msup></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mn>8</mn><msqrt><mn>2</mn></msqrt></mrow><mn>3</mn></mfrac><msup><mi>a</mi><mn>2</mn></msup></math>'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 75, questionText: 'If the roots of px<sup>2</sup> + qx + r = 0 be in the ratio of 4:5 then', options: ['12pr = 25q<sup>2</sup>', '25pr = 12q<sup>2</sup>', '81q<sup>2</sup> = 20pr', '25pr = 3q<sup>2</sup>'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 76, questionText: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfenced open="|" close="|"><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mo>-</mo><mi>k</mi></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mi>k</mi></mtd><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable></mfenced></math>=0 for k =', options: ['-1', '0', '1', 'for all k in R'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 77, questionText: 'The equation of tangent to the parabola y<sup>2</sup> = 5x perpendicular to the line x+2y-7 = 0 is:', options: ['16x-8y+5 = 0', '4x-2y+8 = 0', '4x-4y+9 = 0', '2x-y+11 = 0'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 78, questionText: 'If (tan<sup>-1</sup>x)<sup>2</sup> + (cot<sup>-1</sup>x)<sup>2</sup> = <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mn>5</mn><msup><mi>π</mi><mn>2</mn></msup></mrow><mn>8</mn></mfrac></math> then x=', options: ['-1', '0', '1', '2'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 79, questionText: 'A variable plane is at a constant distance p from the origin and meets the axes at A, B, C. The locus of the centroid of the triangle ABC is', options: ['x<sup>2</sup> +y<sup>2</sup>+ z<sup>2</sup> = p<sup>2</sup>', 'x<sup>2</sup> +y<sup>2</sup>+ z<sup>2</sup> = 9p<sup>2</sup>', 'x<sup>2</sup> +y<sup>2</sup>+ z<sup>2</sup> = p<sup>-2</sup>', 'x<sup>2</sup> +y<sup>2</sup>+ z<sup>2</sup> = 9p<sup>-2</sup>'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 80, questionText: 'In what ratio the XY-plane divides the line segment joining points (-1,3,4) &amp; (2,-5,6) is', options: ['2:3 internally', '2:3 externally', '3:2 internally', '3:2 externally'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 81, questionText: 'If the position vectors A and B are 3i-2j+k and 2i+4j-3k the |AB|', options: ['<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mn>14</mn></msqrt></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mn>29</mn></msqrt></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mn>43</mn></msqrt></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><msqrt><mn>53</mn></msqrt></math>'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 82, questionText: 'A body of mass 2kg has an initial velocity of 5m/s along OA is subjected a force 4N perpendicular to OA. The displacement of the body after 4 seconds will be:', options: ['12m', '20m', '26m', '36m'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 83, questionText: 'The distance between two rails is 1 m on a circular track of radius 400 m. The outer rail must be raised be how much distance so that a train moves with a speed of 20 m/s without any friction.', options: ['5cm', '10cm', '15cm', '20cm'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 84, questionText: 'A soap bubble is blown to a diameter of 7cm. if 36960 erg work is done to blow it further, then the new radius when the surface tension is 40dyne/cm is:', options: ['7cm', '15cm', '3.5cm', '14cm'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 85, questionText: 'A block of metal of specific heat capacity 0.10.1 cal/g∘C fall from a height of 100 m. If 60% of energy of fall is converted into heat then rise in temperature is:', options: ['1.43°C', '1.53°C', '1.62°C', '0.95°C'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 86, questionText: 'A carnot engine whose source is at 400K, takes 200 calories of heat and rejects 150 calories of heat to sink. The temperature of sink is:', options: ['267 K', '200 K', '300 K', '250 K'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 87, questionText: 'To make an achromatic combination a convex lens of focal length 42 cm having dispersive power 0.14 I placed in contact with a concave lens of dispersive power 0.21. The length of the convex lens should be', options: ['14 cm', '21 cm', '63 cm', '42 cm'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 88, questionText: 'A capacitor has capacitance C in air. The either half part of the plate is filled with a dielectric of constant K. The new capacitance will be:', options: ['KC', '(K+1)C', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>C</mi></mrow></mfrac></math>', '(K-1)C'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 89, questionText: 'A current in the windings on a toroid is 2A. There are 400 turns and the mean circumferential length is 40cm. If the magnetic field inside is 1T, the relative permeability is :', options: ['200', '250', '400', '150'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 90, questionText: 'An ammeter reads up to 1 A. Its internal resistance is 0.81 Ω. To increase the range to 10 A, the value of shunt required is:', options: ['0.9 Ω', '0.09 Ω', '0.03 Ω', '0.3 Ω'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 91, questionText: 'A cord attached to a vibrating tuning fork is divided into six string segments under a tension of 36 N. it will be divided into 4 segments if the tension is', options: ['16 N', '24 N', '48 N', '81 N'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 92, questionText: 'If the electron in hydrogen atom jumps from third orbit to second orbit, the wavelength of the emitted radiation is given by: ', options: ['<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>36</mn><mrow><mn>5</mn><mi>R</mi></mrow></mfrac></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5R</mn><mrow><mn>36</mn></mrow></mfrac></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>5</mn><mrow><mi>R</mi></mrow></mfrac></math>', '<math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>R</mn><mrow><mn>6</mn></mrow></mfrac></math>'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 93, questionText: 'The count rate of a radioactive source at t=0 was 1600 count/sec and at t= 8 sec it was 100 count/sec. The count rate at t = 6 sec will be', options: ['150', '200', '300', '400'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 94, questionText: 'A current 2 A when passed for 5 hours through a molten metal salt, deposits 22.2 g of metal of atomic weight 177. The oxidation state of the metal in the metal salt is', options: ['+1', '+2', '+3', '+4'], correctAnswer: 'C', marks: 2 },
+{ questionNumber: 95, questionText: '6.3gm of hydrated oxalic acid (H<sub>2</sub>C<sub>2</sub>O<sub>4</sub> ⋅ H<sub>2</sub>O) is present in 100 ml normal solution of the acid. The mole of water of crystallization is', options: ['2', '3', '4', '5'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 96, questionText: 'A container of volume V contains 0.28 g of N<sub>2</sub> gas, if some amount of an unknown gas under similar condition of temperature and pressure weight 0.44 g, the molecular mass of the gas is', options: ['22', '44', '66', '88'], correctAnswer: 'B', marks: 2 },
+{ questionNumber: 97, questionText: 'Identify the incorrect statement with respect to ozone.', options: ['Ozone is formed in the upper atmosphere by a photochemical reaction involving dioxygen.', 'Ozone is more reactive than oxygen.', 'Ozone is diamagnetic whereas dioxygen is paramagnetic.', 'Ozone protects the earth\'s inhabitants by absorbing γ radiations.'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 98, questionText: 'The charge/size ratio of a cation determines its polarizing power. Which one of the following sequences represents the increasing order of the polarizing power of the cationic species, K<sup>+</sup>, Ca<sup>2+</sup>, Mg<sup>2+</sup>, Be<sup>2+</sup>?', options: ['Ca<sup>2+</sup> &lt; Mg<sup>2+</sup> &lt; Be<sup>2+</sup> &lt; K<sup>+</sup>', 'Mg<sup>2+</sup> &lt; Be<sup>2+</sup> &lt; K<sup>+</sup> &lt; Ca<sup>2+</sup>', 'Be<sup>2+</sup> &lt; K<sup>+</sup> &lt; Ca<sup>2+</sup> &lt; Mg<sup>2+</sup>', 'K<sup>+</sup> &lt; Ca<sup>2+</sup> &lt; Mg<sup>2+</sup> &lt; Be<sup>2+</sup>'], correctAnswer: 'D', marks: 2 },
+{ questionNumber: 99, questionText: 'An organic compound A reacts with sodium metal and forms B. On heating with conc. H<sub>2</sub>SO<sub>4</sub>, A gives diethyl ether. What are A and B?', options: ['C<sub>4</sub>H<sub>9</sub>OH and C<sub>4</sub>H<sub>9</sub>ONa', 'CH<sub>3</sub>OH and CH<sub>3</sub>ONa', 'C<sub>2</sub>H<sub>5</sub>OH and C<sub>2</sub>H<sub>5</sub>ONa', 'C<sub>3</sub>H<sub>7</sub>OH and CH<sub>3</sub>ONa'], correctAnswer: 'A', marks: 2 },
+{ questionNumber: 100, questionText: 'Benzene on treatment with excess of chlorine in presence of anhydrous AlCl3 , under dark and cold condition yield ‘X’. Identify X.', options: ['Chlorobenzene', 'Hexachlorobenzene', 'Benzene Hexachloride', 'Acetophenone'], correctAnswer: 'B', marks: 2 },
+        // Add more questions in the same format
+    ];
+
+    var totalMarks = 0;
+    var correctCount = 0;
+    var wrongCount = 0;
+    var unansweredCount = 0;
+
+    for (var i = 1; i <= 100; i++) {
+        var questionId = 'q' + i;
+        var userResponse = userResponses[questionId] || 'Not attempted';
+        var correctAnswer = correctAnswers[i - 1];
+
+        if (userResponse === correctAnswer) {
+            if (i <= 60) {
+                totalMarks += 1;
+            } else {
+                totalMarks += 2;
+            }
+            correctCount++;
+        } else if (userResponse !== 'Not attempted') {
+            if (i <= 60) {
+                totalMarks -= 0.1;
+            } else {
+                totalMarks -= 0.2;
+            }
+            wrongCount++;
+        } else {
+            unansweredCount++;
+        }
+
+        var gridBox = document.createElement('div');
+        gridBox.className = 'grid-box';
+        gridBox.style.color='white';
+        gridBox.textContent = i;
+        if (userResponse === 'Not attempted') {
+            gridBox.style.backgroundColor = 'grey';
+        } else if (userResponse === correctAnswer) {
+            gridBox.style.backgroundColor = '#25591f'; //green color appears in small grid correct box
+        } else {
+            gridBox.style.backgroundColor = '#c31d1d'; //red color appears in small grid correct box
+        }
+        gridContainer.appendChild(gridBox);
+
+        gridBox.addEventListener('click', function () {
+            var questionNumber = parseInt(this.textContent);
+            var question = questions[questionNumber - 1];
+            var questionId = 'q' + question.questionNumber;
+            var userResponse = userResponses[questionId] || 'Not attempted';
+
+            questionContainer.innerHTML = '';
+
+            var questionNumberDiv = document.createElement('div');
+            questionNumberDiv.className = 'question-number';
+            questionNumberDiv.innerHTML = `<div><b>${question.questionNumber}. </b>${question.questionText}</div>
+                                            <div style="color: rgb(73, 72, 72); font-size: small; text-indent: 22px;">[${question.marks} marks]</div>`;
+
+                                            var answerOptionsDiv = document.createElement('div');
+                                            answerOptionsDiv.className = 'answer-options';
+question.options.forEach(function (option, index) {
+    var answerOptionDiv = document.createElement('div');
+    answerOptionDiv.className = 'answer-option';
+
+    // Check if the current option is the correct answer
+    if (String.fromCharCode(65 + index) === question.correctAnswer) {
+        answerOptionDiv.innerHTML = `<label style="color: green;">
+                                        <div><b>${String.fromCharCode(65 + index)}. ${option}</b></div>
+                                    </label><br><br>`;
+    } else if (String.fromCharCode(65 + index) === userResponse) {
+        answerOptionDiv.innerHTML = `<label style="color: red;">
+                                        <div><b>${String.fromCharCode(65 + index)}. ${option}</b></div>
+                                    </label><br><br>`;
+    } else {
+        answerOptionDiv.innerHTML = `<label>
+                                        <div>${String.fromCharCode(65 + index)}. ${option}</div>
+                                    </label><br><br>`;
+    }
+
+    answerOptionsDiv.appendChild(answerOptionDiv);
+});
+
+
+
+            questionContainer.appendChild(questionNumberDiv);
+            questionContainer.appendChild(answerOptionsDiv);
+
+            var userResponseDiv = document.createElement('div');
+userResponseDiv.style.fontSize = '18px'; // Set the font size here
+
+if (userResponse === 'Not attempted') {
+    userResponseDiv.textContent = 'Your Answer: Not attempted';
+    userResponseDiv.style.color = 'grey'; // Change color to grey for not attempted
+} else if (userResponse === question.correctAnswer) {
+    userResponseDiv.textContent = 'Your Answer: ' + userResponse;
+    userResponseDiv.style.color = 'green'; // Change color to green for correct answer
+} else {
+    userResponseDiv.textContent = 'Your Answer: ' + userResponse;
+    userResponseDiv.style.color = '#FF2400'; // Change color to red for wrong answer
+}
+
+questionContainer.appendChild(userResponseDiv);
+
+var correctAnswerDiv = document.createElement('div');
+correctAnswerDiv.textContent = 'Correct Answer: ' + question.correctAnswer;
+correctAnswerDiv.style.fontSize = '18px'; // Set the font size here
+correctAnswerDiv.style.color = 'green'; // Set the font size here
+questionContainer.appendChild(correctAnswerDiv);
+
+// Create a div for the logic of the question and hide it initially
+var logicDiv = document.createElement('div');
+logicDiv.className = 'logic-container';
+logicDiv.textContent = 'Logic: ' + question.logic; // Set the logic content here
+logicDiv.style.display = 'none';
+logicDiv.style.color = '#34495E ';
+logicDiv.style.border = '1px solid #34495E ';
+logicDiv.style.borderRadius = '8px';
+logicDiv.style.padding = '10px';
+ // Hide the logic box initially
+questionContainer.appendChild(logicDiv);
+
+// Add an event listener to toggle the visibility of the logic box on click
+questionContainer.addEventListener('click', function() {
+    // Toggle the display style between 'block' and 'none'
+    logicDiv.style.display = (logicDiv.style.display === 'none' || logicDiv.style.display === '') ? 'block' : 'none';
+});
+
+        });
+    }
+
+    var leaderboardEntries = [
+        { name: 'Total Marks', value: totalMarks.toFixed(1) },
+        { name: 'Answered Questions', value: correctCount + wrongCount },
+        { name: 'Correct Answers', value: correctCount },
+        { name: 'Wrong Answers', value: wrongCount },
+        { name: 'Unanswered Questions', value: unansweredCount }
+    ];
+
+    leaderboardEntries.forEach(function (entry) {
+        var leaderboardEntry = document.createElement('div');
+        leaderboardEntry.className = 'leaderboard-entry';
+        if (entry.name === 'Correct Answers') {
+            leaderboardEntry.classList.add('correct');
+        } else if (entry.name === 'Wrong Answers') {
+            leaderboardEntry.classList.add('wrong');
+        } else if (entry.name === 'Unanswered Questions') {
+            leaderboardEntry.classList.add('unanswered');
+        }
+        leaderboardEntry.innerHTML = '<div class="name">' + entry.name + '</div><div class="value">' + entry.value + '</div>';
+        leaderboardContainer.appendChild(leaderboardEntry);
+    });
+});
+</script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>

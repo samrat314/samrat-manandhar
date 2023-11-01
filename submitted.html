@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOE Entrance Model</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img2/favicon2-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img2/favicon2-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    <style>
+        .containersamton{
+            height: 16rem;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .containersamton1{
+            height: 2rem;
+            padding: 10px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            color: rgb(95, 95, 95);
+            font-size: 30px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .containersamton2{
+            border-bottom: 0.5px solid rgb(206, 206, 206);
+            border-top: 0.5px solid rgb(206, 206, 206);
+            padding-left: 2px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: rgb(95, 95, 95);
+        }
+
+        .containersamton3{
+            
+            padding: 20px;
+            background-color: #f5f4f4;;
+        }
+        .buttonsubmital{
+            background-color: #17a9e3;
+            border: none;
+            padding: 5px;
+            border-radius: 3px;
+            color: azure;
+            font-weight: bold;
+            border: 0.5px solid #0980a1;
+            padding-left: 10px;
+            padding-right: 10px;
+            height: 30px
+           }
+        a{
+            text-decoration: none;
+            color: #fff
+        }
+
+
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+            span{
+                position: relative;
+                display: inline-flex;
+                width: 180px;
+                height: 55px;
+                margin: 0 15px;
+                perspective: 1000px;
+            }
+            span a{
+                font-size: 20px;
+                letter-spacing: 1px;
+                transform-style: preserve-3d;
+                transform: translateZ(-25px);
+                transition: transform .25s;
+                font-family: 'Montserrat', sans-serif;
+            }
+            span a:before,
+            span a:after{
+                position: absolute;
+                content: "See Results";
+                height: 55px;
+                width: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid #478778;
+                box-sizing: border-box;
+                border-radius: 5px;
+            }
+            span a:before{
+                color: #fff;
+                background: #228B22 ;
+                transform: rotateY(0deg) translateZ(25px);
+            }
+            span a:after{
+                color: #228B22 ;
+                transform: rotateX(90deg) translateZ(25px);
+            }
+            span a:hover{
+                transform: translateZ(-25px) rotateX(-90deg);
+            }
+
+
+
+
+            .belowfooter{
+                
+                margin: 10px;
+                margin-top: 200px;
+                display: flex;
+                justify-content: end;
+                padding: 30px;
+                background-color: #fff;
+            }
+            #studentName{
+                padding: 0px;
+                display: inline;
+            }
+
+
+    </style>
+    
+</head>
+
+<body>
+    
+
+
+    <div class="samrat"><h3>IOE Entrance Model Software</h3></div>
+    <div class="secondbody2">
+    <div class="navbar">
+        <div class="logo-container">
+            <img src="tu_logo.png" alt="TU Logo" class="logo">
+        </div>
+        <div class="text-column">
+            <div class="text1">Tribhuvan University</div>
+            <div class="text1">Institute of Engineering</div>
+            <div class="text1">Entrance Examination Board</div>
+        </div></div>
+        
+        <div class="exam-info">
+            <div class="blue-bar"></div>
+            <div class="text">BE/ B. Arch Online Entrance Examination</div>
+        </div>
+
+        <div class="containersamton">
+            <div class="containersamton1">Submission Successful</div>
+            <div class="containersamton2">Thank you <b><div id="studentName"></div></b>, for your kind co-operation. Your exam has been successfully submitted.</div>
+            <div class="containersamton3">
+                <button class="buttonsubmital"><a href="index.html">Go To Home</a></button>
+                
+            </div>
+            
+
+
+        </div>
+    <footer class="footer">
+        <div><b>Powered By: </b></div>
+        <div>Institute of Engineering Pulchowk, Lalitpur</div>
+        <div>P.O.Box. 1175, kathmandu, Nepal Tel. 5521531</div>
+        <div>Email: entrance@ioe.edu.np</div>
+        <br>
+    </footer>
+    
+
+    <div class="belowfooter">
+        
+        <span><a class="resultsview" href="results.html"></a></span>
+        
+    
+        
+    </div>
+</div>
+    
+
+<script src="script.js"></script>
+<script>// Retrieve the data from localStorage
+    var storedName = localStorage.getItem("studentName");
+    var storedRollNumber = localStorage.getItem("rollNumber");
+    var storedImage = localStorage.getItem("studentImage");
+
+    // Check if the data exists in localStorage
+    if (storedName && storedRollNumber && storedImage) {
+        // Update the displayed name and roll number on the second page
+        document.getElementById("studentName").textContent = storedName;
+        document.getElementById("rollNumber").textContent = "(" + storedRollNumber + ")";
+
+        // Update the student photo
+        var studentPhotoDiv = document.querySelector(".student-photo");
+        var img = document.createElement("img");
+        img.src = storedImage;
+        img.alt = "Student Photo";
+        img.style.maxWidth = "80px";
+        img.style.maxheight = "90px";  // You can adjust the maximum width as needed
+        studentPhotoDiv.appendChild(img);
+    } else {
+        document.getElementById("studentName").textContent = 'Samrat Manandhar';
+        document.getElementById("rollNumber").textContent = "(2022-2279)";
+    }
+
+</script> 
+
+</body>
+
+
+</html>
