@@ -1,0 +1,129 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="generator.css">
+    <title>Question Maker Algorithm</title>
+    
+</head>
+<body>
+   
+    
+
+    <div id="content-container">
+
+        <div id="question-form">
+        <div class="samtools">
+            <div id="maths-button">∰</div>
+            <div id="symbol-keyboard"></div>
+
+
+            <div class="fracbutton"  onclick="toggleFractionBox()">A/B</div>
+            <div class="fractionbox" id="fractionBox" style="display: none;">
+                 <label for="numerator">Numerator:</label>
+                <input type="text" id="numerator">
+                <br>
+                <label for="denominator">Denominator:</label>
+                <input type="text" id="denominator">
+                <br>
+                <button onclick="generateFraction()">Generate Fraction</button>
+                <div id="fraction-container"></div>
+                <button onclick="generateHTMLfrac()">Generate HTML Code</button>
+                <div class="samedit">
+                      <div id="outputfrac"></div>
+                 </div>
+            </div>
+           
+           
+            <div class="matrixbutton" onclick="toggleMatrixBox()"> [ ] </div>
+            <div class="matrixbox" id="matrixBox" style="display: none;">
+                <button onclick="generateMatrix()">Generate Matrix</button>
+                <div id="matrix-container"></div>
+                <button onclick="generateHTML()">Generate HTML Code</button>
+                <div class="samedit">
+                <div id="output"></div>
+                <button onclick="copyToClipboard2()">Copy HTML</button>
+            </div>
+            </div>
+
+            <div class="allmathbutton" id="popupButton">ζ</div>
+
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <iframe id="popupFrame" src="https://www.imatheq.com/imatheq/com/imatheq/math-equation-editor.html"></iframe>
+                    <br>
+                    <button id="closeButton">Close</button>
+                    
+                </div>
+            </div>
+
+            
+
+        </div>
+
+           <label for="questionInput">New Question:</label>
+           <textarea id="questionInput" required></textarea><br><br>
+        
+            <label for="optionAInput">Option A:</label>
+            <input type="text" id="optionAInput" required><br><br>
+        
+            <label for="optionBInput">Option B:</label>
+            <input type="text" id="optionBInput" required><br><br>
+        
+            <label for="optionCInput">Option C:</label>
+            <input type="text" id="optionCInput" required><br><br>
+        
+            <label for="optionDInput">Option D:</label>
+            <input type="text" id="optionDInput" required><br><br>
+            <button onclick="updateQuestion()">Add Question</button>
+            <button class="redgang" onclick="clearInputs()">Clear</button>
+            <button class="redgang" onclick="cancelPreviousQuestion()">Cancel Previous</button>
+        </div>
+
+
+        <div id="output-container">
+            <div class="marks-switch">
+                <button id="marks-switch-button" class="active" onclick="toggleMarksOption()">[1 Marks]</button>
+            </div>
+            
+            <label for="html-output">Updated HTML Code:</label>
+            <textarea class="samsam" id="html-output" readonly></textarea>
+            <button id="copy-button" onclick="copyToClipboard()">Copy</button>
+            <span id="copy-status"></span>
+            <button class="redgang" onclick="sweepHTML()">Sweep</button>
+        </div>
+        
+
+        <div id="question-container"></div>
+       
+        
+        
+    </div>
+ <div class="osmium">
+    <div class="code-container" id="code-container"> </div>
+          <!-- Add buttons for A, B, C, D -->
+<button id="btnA">[A]</button>
+<button id="btnB">[B]</button>
+<button id="btnC">[C]</button>
+<button id="btnD">[D]</button>
+<!-- Remove button -->
+<button id="removeBtnkatta">Remove</button>
+
+<!-- Container to display correct answers -->
+<div class="aesthetic-container" id="correct-answers-container"></div>
+    
+</div> 
+    
+
+
+
+
+    <script src="generator.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/mml-chtml.min.js"></script>
+
+</body>
+</html>
