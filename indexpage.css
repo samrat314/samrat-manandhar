@@ -861,13 +861,14 @@ font-size: 10px;
 }
 
 .contact-options {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
     justify-content: center;
     margin-top: 20px;
 }
 
 .contact-option {
-    margin: 0 20px;
+    margin: 10px 20px;
     font-size: 20px;
     transition: transform 0.3s ease-in-out;
 }
